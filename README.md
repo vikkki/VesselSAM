@@ -23,7 +23,7 @@ cd VesselSAM
 python -m pip install -e ".[sam]"
 ```
 
-**Weights — Hugging Face link coming soon.** Choose `AVT6.pt` (AVT) or `TBAD10.pt` (TBAD), plus the matching [MedSAM ViT-B base weights](https://github.com/bowang-lab/MedSAM). [Checkpoint details](checkpoints/README.md).
+**[Download weights on Hugging Face](https://huggingface.co/hakuuux/VesselSAM_0.2).** Choose `AVT6.pt` (AVT) or `TBAD10.pt` (TBAD), plus the matching [MedSAM ViT-B base weights](https://github.com/bowang-lab/MedSAM). [Checkpoint details](checkpoints/README.md).
 
 Point to your downloaded weights and image, then run:
 
@@ -39,6 +39,8 @@ python -m vesselsam predict \
 Replace `--box` with your own `xmin ymin xmax ymax` in original-image pixels. CUDA is used when available; add `--device cpu` to run on CPU.
 
 You’ll get `mask.png`, `probability.npy`, and `prediction.json`. Masks keep the input image size.
+
+> **AVT tip:** Some KiTS/Rider scans have a +1024 intensity offset. Check each scan before windowing and subtract 1024 only if the offset is confirmed; leave already-calibrated HU values unchanged. `--raw-hu` applies the CT window, not offset correction. [Background](https://github.com/RasmusRPaulsen/AortaExplorer/blob/main/AO-AVT.MD#kits-and-rider).
 
 <details>
 <summary>Preparing your CT slice</summary>
