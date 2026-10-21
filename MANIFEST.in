@@ -1,0 +1,5 @@
+include LICENSE README.md requirements.txt
+recursive-include assets *.svg
+recursive-include checkpoints *.md
+recursive-include tests *.py
+global-exclude __pycache__ *.py[cod] .DS_Store

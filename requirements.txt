@@ -1,0 +1,2 @@
+# Install the PyTorch build for your device first, then run: pip install -r requirements.txt
+-e .[sam]

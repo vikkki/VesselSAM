@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vesselsam"
+version = "0.1.0"
+description = "VesselSAM inference for box-prompted aortic vessel segmentation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = ["torch>=2.4", "torchvision>=0.19", "numpy>=1.24", "Pillow>=10.0"]
+
+[project.urls]
+Repository = "https://github.com/vikkki/VesselSAM"
+Paper = "https://doi.org/10.1186/s12880-026-02911-1"
+
+[project.optional-dependencies]
+sam = ["segment-anything @ git+https://github.com/facebookresearch/segment-anything.git@dca509fe793f601edb92606367a655c15ac00fdf"]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+vesselsam = "vesselsam.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
